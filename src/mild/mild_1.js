@@ -63,7 +63,7 @@ export function countArray(array) {
             }
             if (array[j] == element) {
                 sum++;
-                array.prototype.splice(j, 1)
+                array.splice(j, 1)
             }
         }
         let count = {"${countArray[i]}": sum}
