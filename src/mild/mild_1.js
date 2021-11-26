@@ -54,6 +54,7 @@ export function maxAndMin(numbers) {
  */
 export function countArray(array) {
     let counts = {}
+    let count = {}
     for(let i of array) {
         let sum = 0
         let element = array[i];
@@ -66,7 +67,7 @@ export function countArray(array) {
                 array.splice(j, 1)
             }
         }
-        let count = {"${countArray[i]}": sum}
+        count = {"${array[i]}": sum}
         counts = {...counts, ...count}
     }
     return counts
