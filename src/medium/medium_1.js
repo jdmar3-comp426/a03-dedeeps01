@@ -8,8 +8,11 @@ import {variance} from "./data/stats_helpers.js";
  * prototype functions. Very useful
  */
 export function getSum(array) {
-    const reducer = (previousValue, currentValue) => previousValue + currentValue
-    return array.prototype.reduce(reducer)
+    let sum = 0
+    for(let i in array) {
+        sum += array[i]
+    }
+    return sum
 }
 
 
@@ -23,7 +26,7 @@ export function getSum(array) {
  * console.log(getMedian(array)); // 4.5
  */
 export function getMedian(array) {
-    array.prototype.sort()
+    array.sort()
     let middle = array.length / 2
     if (array.length % 2 === 0) {
         return (array[middle] + array[middle + 1]) / 2
