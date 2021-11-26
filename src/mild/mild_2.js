@@ -25,8 +25,8 @@ export function identifyVariable(variable) {
  */
 export function identifyArray(array) {
    let types = new Array()
-   for(var i in array) {
-      types.push({type: typeof i, value: i})
+   for(let i in array) {
+      types.push({type: typeof array[i], value: array[i]})
    }
    return types
 }
