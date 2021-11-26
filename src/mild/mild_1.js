@@ -39,7 +39,7 @@ export function getIncreasingArray(startNumber, endNumber) {
  * and https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math
  */
 export function maxAndMin(numbers) {
-    return {min: Math.min(numbers), max: Math.max(numbers)}
+    return {max: Math.max(numbers), min: Math.min(numbers)}
 }
 
 /**
@@ -54,16 +54,16 @@ export function maxAndMin(numbers) {
  */
 export function countArray(array) {
     let counts = {}
-    for(let i of countArray) {
+    for(let i of array) {
         let sum = 0
-        let element = countArray[i];
-        for (let j of countArray) {
+        let element = array[i];
+        for (let j of array) {
             if (i == j) {
                 continue
             }
-            if (countArray[j] == element) {
+            if (array[j] == element) {
                 sum++;
-                countArray.prototype.splice(j, 1)
+                array.prototype.splice(j, 1)
             }
         }
         let count = {"${countArray[i]}": sum}
