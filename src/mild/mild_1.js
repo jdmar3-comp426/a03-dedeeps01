@@ -69,4 +69,5 @@ export function countArray(array) {
         let count = {"${countArray[i]}": sum}
         counts = {...counts, ...count}
     }
+    return counts
 }
