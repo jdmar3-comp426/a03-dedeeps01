@@ -53,22 +53,5 @@ export function maxAndMin(numbers) {
  *
  */
 export function countArray(array) {
-    let counts = {}
-    let count = {}
-    for(let i of array) {
-        let sum = 0
-        let element = array[i];
-        for (let j of array) {
-            if (i == j) {
-                continue
-            }
-            if (array[j] == element) {
-                sum++;
-                array.splice(j, 1)
-            }
-        }
-        count = {"${array[i]}": sum}
-        counts = {...counts, ...count}
-    }
-    return counts
+    return _.countBy(array)
 }
