@@ -6,7 +6,7 @@
  * returns: { type: 'number', value: 4 }
  */
 export function identifyVariable(variable) {
-   return {type: variable.type, value: variable}
+   return {type: typeof variable, value: variable}
 }
 
 
@@ -26,7 +26,7 @@ export function identifyVariable(variable) {
 export function identifyArray(array) {
    let types = new Array()
    for(var i in array) {
-      types.push({type: i.type, value: i})
+      types.push({type: typeof i, value: i})
    }
    return types
 }
