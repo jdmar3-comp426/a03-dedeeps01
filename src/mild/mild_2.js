@@ -50,7 +50,7 @@ export function identifyArray(array) {
 export function removeKey(object, key) {
    for(let k in object) {
       if (k === key) {
-         delete object.k
+         delete object[k]
       }
    }
 }
