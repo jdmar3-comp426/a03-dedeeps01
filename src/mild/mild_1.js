@@ -53,5 +53,18 @@ export function maxAndMin(numbers) {
  *
  */
 export function countArray(array) {
-    return _.countBy(array)
+    let map = new Map()
+    for(let i in array) {
+        let sum = 0
+        if (map.has(array[i])) {
+            continue
+        }
+        for(let j in array) {
+            if (array[i] === array[j]) {
+                sum++
+            }
+        }
+        map.set(array[i], sum)
+        }
+    return map
 }
