@@ -108,7 +108,7 @@ export function removeKeys(object, keyList) {
    for(let i in object) {
       for (let j in keyList) {
          if (i === j) {
-            delete object.i
+            delete object[i]
          }
       }
    }
