@@ -63,9 +63,9 @@ export function getMedian(array) {
  }
  */
 export function getStatistics(array) {
+    let aLength = array.length
     let aMin = array[0]
     let aMax = array[aLength - 1]
-    let aLength = array.length
     let aSum = getSum(array)
     let aMean = aSum / aLength
     let aVariance = variance(array, aMean)
