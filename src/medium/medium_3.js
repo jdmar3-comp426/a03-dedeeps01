@@ -18,7 +18,11 @@ queries.
  *
  */
 export function searchHighPower(car_data, minHorsepower, minTorque) {
-    car_data.filter(car => car['horsepower'] >= minHorsepower && car['torque'] >= minTorque)
+    for(let i = 0; i < car_data.length; i++) {
+        if (!(car_data[i]['horsepower'] >= minHorsepower && car_data[i]['torque'] >= minTorque)) {
+            car_data.splice(i, 1)
+        }
+    }
     for(let i = 0; i < car_data.length; i++) {
         for(let j = 0; j < ( car_data.length - i -1 ); j++){
           if(car_data[j]['horsepower'] < car_data[j+1]['horsepower']){
@@ -43,7 +47,11 @@ export function searchHighPower(car_data, minHorsepower, minTorque) {
  *
  */
 export function searchMpg(car_data, minCity, minHighway) {
-    car_data.filter(car => car['highway_mpg'] >= minHighway && car['city_mpg'] >= minCity)
+    for(let i = 0; i < car_data.length; i++) {
+        if (!(car_data[i]['highway_mpg'] >= minHighway && car_data[i]['city_mpg'] >= minCity)) {
+            car_data.splice(i, 1)
+        }
+    }
     for(let i = 0; i < car_data.length; i++) {
         for(let j = 0; j < ( car_data.length - i -1 ); j++){
           if(car_data[j]['highway_mpg'] < car_data[j+1]['highway_mpg']){
@@ -66,16 +74,12 @@ export function searchMpg(car_data, minCity, minHighway) {
  * @returns {[]} array of cars
  */
 export function searchName(car_data, searchTerm) {
-    let ordered = new Array()
-    car_data.filter(car => car['id'].toLowerCase().includes(searchTerm.toLowerCase()))
-    for(let i in car_data.length) {
-        for(let j in car_data) {
-            if(car_data[j]['id'].indexof(searchTerm) === i) {
-                ordered.push(car_data[j])
-            } 
+    for(let i = 0; i < car_data.length; i++) {
+        if (!car_data[i]['id'].toLowerCase().includes(searchTerm.toLowerCase())) {
+            car_data.splice(i, 1)
         }
     }
-    return ordered
+    return car_data
 }
 
 
@@ -88,7 +92,11 @@ export function searchName(car_data, searchTerm) {
  * @returns {[]} an array of car objects
  */
 export function searchByYear(car_data, years) {
-    car_data.filter(car => years.includes(car['year']))
+    for(let i = 0; i < car_data.length; i++) {
+        if (!years.includes(car_data[i]['year'])) {
+            car_data.splice(i, 1)
+        }
+    }
     for(let i = 0; i < car_data.length; i++) {
         for(let j = 0; j < ( car_data.length - i -1 ); j++){
           if(car_data[j]['year'] < car_data[j+1]['year']){
