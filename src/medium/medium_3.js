@@ -18,21 +18,22 @@ queries.
  *
  */
 export function searchHighPower(car_data, minHorsepower, minTorque) {
-    for(let i in car_data) {
-        if (car_data[i]['horsepower'] < minHorsepower || car_data[i]['torque'] < minTorque) {
+    let sorted = [...car_data]
+    for(let i in sorted) {
+        if (sorted[i]['horsepower'] < minHorsepower || sorted[i]['torque'] < minTorque) {
             delete car_data[i]
         }
     }
-    for(let i in car_data) {
-        for(let j = 0; j < ( car_data.length - i -1 ); j++){
-          if(car_data[j]['horsepower'] < car_data[j+1]['horsepower']){
-            var temp = car_data[j]
-            car_data[j] = car_data[j + 1]
-            car_data[j+1] = temp
+    for(let i in sorted) {
+        for(let j = 0; j < ( sorted.length - i -1 ); j++){
+          if(sorted[j]['horsepower'] < sorted[j+1]['horsepower']){
+            var temp = sorted[j]
+            sorted[j] = sorted[j + 1]
+            sorted[j+1] = temp
           }
         }
       }
-      return car_data
+      return sorted
 }
 
 
