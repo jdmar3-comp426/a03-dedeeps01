@@ -50,7 +50,7 @@ export function searchHighPower(car_data, minHorsepower, minTorque) {
 export function searchMpg(car_data, minCity, minHighway) {
     let sorted = new Array()
     for(let i in car_data) {
-        if (car_data[i]['highway_mpg'] >= minHorsepower && car_data[i]['city_mpg'] >= minTorque) {
+        if (car_data[i]['highway_mpg'] >= minHighway && car_data[i]['city_mpg'] >= minCity) {
             sorted.push(car_data[i])
         }
     }
