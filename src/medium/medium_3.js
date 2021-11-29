@@ -48,21 +48,22 @@ export function searchHighPower(car_data, minHorsepower, minTorque) {
  *
  */
 export function searchMpg(car_data, minCity, minHighway) {
+    let sorted = new Array()
     for(let i in car_data) {
-        if (car_data[i]['highway_mpg'] < minHighway || car_data[i]['city_mpg'] < minCity) {
-            car_data.splice(i, 1)
+        if (car_data[i]['highway_mpg'] >= minHorsepower && car_data[i]['city_mpg'] >= minTorque) {
+            sorted.push(car_data[i])
         }
     }
-    for(let i in car_data) {
-        for(let j = 0; j < ( car_data.length - i -1 ); j++){
-          if(car_data[j]['highway_mpg'] < car_data[j+1]['highway_mpg']){
-            var temp = car_data[j]
-            car_data[j] = car_data[j + 1]
-            car_data[j+1] = temp
+    for(let i in sorted) {
+        for(let j = 0; j < ( sorted.length - i -1 ); j++){
+          if(sorted[j]['highway_mpg'] < sorted[j+1]['highway_mpg']){
+            var temp = sorted[j]
+            sorted[j] = sorted[j + 1]
+            sorted[j+1] = temp
           }
         }
       }
-    return car_data
+      return sorted
 }
 
 
@@ -75,12 +76,13 @@ export function searchMpg(car_data, minCity, minHighway) {
  * @returns {[]} array of cars
  */
 export function searchName(car_data, searchTerm) {
+    let sorted = new Array()
     for(let i in car_data) {
-        if (!car_data[i]['id'].toLowerCase().includes(searchTerm.toLowerCase())) {
-            car_data.splice(i, 1)
+        if (car_data[i]['id'].toLowerCase().includes(searchTerm.toLowerCase())) {
+            sorted.push(car_data[i])
         }
     }
-    return car_data
+      return sorted
 }
 
 
@@ -93,19 +95,20 @@ export function searchName(car_data, searchTerm) {
  * @returns {[]} an array of car objects
  */
 export function searchByYear(car_data, years) {
+    let sorted = new Array()
     for(let i in car_data) {
-        if (!years.includes(car_data[i]['year'])) {
-            car_data.splice(i, 1)
+        if (years.includes(car_data[i]['year'])) {
+            sorted.push(car_data[i])
         }
     }
-    for(let i in car_data) {
-        for(let j = 0; j < ( car_data.length - i -1 ); j++){
-          if(car_data[j]['year'] < car_data[j+1]['year']){
-            var temp = car_data[j]
-            car_data[j] = car_data[j + 1]
-            car_data[j+1] = temp
+    for(let i in sorted) {
+        for(let j = 0; j < ( sorted.length - i -1 ); j++){
+          if(sorted[j]['year'] < sorted[j+1]['year']){
+            var temp = sorted[j]
+            sorted[j] = sorted[j + 1]
+            sorted[j+1] = temp
           }
         }
       }
-    return car_data
+      return sorted
 }
